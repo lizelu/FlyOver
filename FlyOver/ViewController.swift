@@ -9,16 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let pointView = PointView(frame: CGRect.zero)
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(pointView)
+        for _ in 0...10 {
+            self.view.addSubview(PointView(frame: CGRect.zero))
+        }
     }
 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.pointView.changePoint()
+//        self.pointView.changePoint()
     }
 
     override func didReceiveMemoryWarning() {
