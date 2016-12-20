@@ -40,6 +40,9 @@ class BackView: UIView {
             let bezier: UIBezierPath = self.beziers[index]
             bezier.removeAllPoints()
             self.graph[index] = Array<Bool>(repeating: false, count: self.codeCount)
+            for i in 0..<self.graph.count {
+                self.graph[i][index] = false
+            }
             self.addPoint(bezier: bezier, index: index)
             DispatchQueue.main.async {
                 self.setNeedsDisplay()
