@@ -9,11 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    override func loadView() {
+        self.view = BackView(frame: ScreenBounds)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0...1000 {
-            self.view.addSubview(PointView(frame: CGRect.zero))
-        }
     }
 
     
