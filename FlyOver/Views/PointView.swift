@@ -47,7 +47,7 @@ class PointView: UIView {
     }
     
     func changePoint() {
-        UIView.animate(withDuration: 0.005, animations: {
+        UIView.animate(withDuration: 0.01, animations: {
             var currentPoint = self.frame.origin
             
             if currentPoint.x > ScreenSize.width-self.widthAndHeight || currentPoint.x < 0 {
@@ -67,7 +67,6 @@ class PointView: UIView {
             }
             self.changePoint()
         })
-       
     }
     
     required init?(coder aDecoder: NSCoder) {

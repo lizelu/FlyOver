@@ -9,12 +9,14 @@
 import UIKit
 
 class BackView: UIView {
+    let codeCount = 10
     var codeViews: Array<PointView> = []
     var beziers: Array<UIBezierPath> = []
+    var graph: Array<Array<Bool>> = []
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
-        for i in 0...10 {
+        for i in 0..<codeCount {
             let codeView = PointView(frame: CGRect.zero)
             codeView.tag = i
             weak var weak_self = self
@@ -24,6 +26,7 @@ class BackView: UIView {
             self.addSubview(codeView)
             self.codeViews.append(codeView)
         }
+        self.graph = Array<Array<Bool>>(repeating: Array<Bool>(repeating: false, count: self.codeCount), count: self.codeCount)
     }
     
     override func layoutSubviews() {
@@ -36,6 +39,7 @@ class BackView: UIView {
         DispatchQueue.global().sync {
             let bezier: UIBezierPath = self.beziers[index]
             bezier.removeAllPoints()
+            self.graph[index] = Array<Bool>(repeating: false, count: self.codeCount)
             self.addPoint(bezier: bezier, index: index)
             DispatchQueue.main.async {
                 self.setNeedsDisplay()
@@ -55,9 +59,13 @@ class BackView: UIView {
     
     func addPoint(bezier: UIBezierPath, index: Int) {
         bezier.move(to: self.codeViews[index].center)
+        var preIndex = 0
         for j in 0..<self.codeViews.count {
-            if index != j {
+            if index != j && !self.graph[index][j] {
                 bezier.addLine(to: self.codeViews[j].center)
+                self.graph[preIndex][j] = true
+                self.graph[j][preIndex] = true
+                preIndex = j
             }
         }
     }
