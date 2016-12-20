@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0...10 {
+        for _ in 0...1000 {
             self.view.addSubview(PointView(frame: CGRect.zero))
         }
     }
