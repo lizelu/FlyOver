@@ -13,7 +13,7 @@ typealias UpdateViewsClosure = (Int) -> Void
 class PointView: UIView {
     var x: CGFloat = 1
     var y: CGFloat = 1
-    let widthAndHeight: CGFloat = 2
+    let widthAndHeight: CGFloat = 10
     var updateViewClosure: UpdateViewsClosure! = nil
     var duration: Double = 0.0005
     override init(frame: CGRect) {
