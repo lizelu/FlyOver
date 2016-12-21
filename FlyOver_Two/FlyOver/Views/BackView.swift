@@ -9,9 +9,8 @@
 import UIKit
 
 class BackView: UIView {
-    let codeCount = 10
+    let codeCount = 50
     var codeViews: Array<PointView> = []
-    var graph: Array<Array<Bool>>!
     var beziers: Array<UIBezierPath> = []
     
     override init(frame: CGRect) {
@@ -21,11 +20,9 @@ class BackView: UIView {
             let codeView = PointView(frame: CGRect.zero)
             codeView.tag = i
             weak var weak_self = self
-            if i == 0 {
                 codeView.setUpdateClosure(closure: { (index) in
-                   weak_self?.drawLine()
+                    weak_self?.drawLine(index: index)
                 })
-            }
             
             self.addSubview(codeView)
             self.codeViews.append(codeView)
@@ -33,45 +30,54 @@ class BackView: UIView {
         }
     }
     
+    func areaPoints(index: Int) -> Array<CGPoint> {
+        var points = Array<CGPoint>()
+        points.append(self.codeViews[index].center)
+        for item in self.codeViews {
+            let distance = self.countDistance(point1: self.codeViews[index].center,
+                                              point2: item.center)
+            
+            if distance < 100 {
+                points.append(item.center)
+            }
+        }
+        return points
+    }
+    
+    func countDistance(point1: CGPoint, point2: CGPoint) -> CGFloat {
+        let x = pow(point1.x - point2.x, 2)
+        let y = pow(point1.y - point2.y, 2)
+        return CGFloat(sqrt(Double(x + y)))
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.drawLine()
-        
     }
     
-    func drawLine() {
-        self.initGraph()
-        for i in 0..<self.codeViews.count {
-            self.beziers[i].removeAllPoints()
-            self.addPoint(index: i)
-        }
-        self.setNeedsDisplay()
-    }
-    
-    func initGraph() {
-        if self.graph == nil {
-            self.graph = Array<Array<Bool>>(repeating: Array<Bool>(repeating: false, count: self.codeCount), count: self.codeCount)
-        } else {
-            for i in 0..<self.graph.count {
-                for j in 0..<self.graph.count {
-                    self.graph[i][j] = false
-                    self.graph[j][i] = false
+    func drawLine(index: Int) {
+        DispatchQueue.global().sync {
+            let points: Array<CGPoint> = self.areaPoints(index: index)
+            var graph: Array<Array<Bool>>! = Array<Array<Bool>>(repeating: Array<Bool>(repeating: false, count: points.count), count: points.count)
+            
+            let bezier = self.beziers[index]
+            bezier.removeAllPoints()
+            for i in 0..<points.count {
+                for j in 0..<points.count {
+                    if i != j && !graph[i][j] {
+                        bezier.move(to: points[i])
+                        bezier.addLine(to: points[j])
+                        graph[i][j] = true
+                        graph[j][i] = true
+                    }
                 }
             }
-        }
-    }
-    
-    func addPoint(index: Int) {
-        for j in 0..<self.codeViews.count {
-            if index != j && !self.graph[index][j] {
-                self.beziers[index].move(to: self.codeViews[index].center)
-                self.beziers[index].addLine(to: self.codeViews[j].center)
-                self.graph[index][j] = true
-                self.graph[j][index] = true
+            DispatchQueue.main.async {
+                 self.setNeedsDisplay()
             }
         }
     }
     
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

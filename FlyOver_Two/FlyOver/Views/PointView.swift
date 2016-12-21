@@ -13,15 +13,17 @@ typealias UpdateViewsClosure = (Int) -> Void
 class PointView: UIView {
     var x: CGFloat = 1
     var y: CGFloat = 1
-    let widthAndHeight: CGFloat = 5
+    let widthAndHeight: CGFloat = 2
     var updateViewClosure: UpdateViewsClosure! = nil
+    var duration: Double = 0.0005
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.x = randomIncrement()
         self.y = randomIncrement()
-        self.layer.cornerRadius = 2.5
+        self.layer.cornerRadius = widthAndHeight / 2
         self.backgroundColor = UIColor.blue
         self.frame = CGRect(origin: randomPoint(), size: CGSize(width: widthAndHeight, height: widthAndHeight))
+        self.duration = self.randomDuraion()
     }
     
     override func layoutSubviews() {
@@ -47,7 +49,7 @@ class PointView: UIView {
     }
     
     func changePoint() {
-        UIView.animate(withDuration: 0.0001, animations: {
+        UIView.animate(withDuration: self.duration, animations: {
             var currentPoint = self.frame.origin
             
             if currentPoint.x > ScreenSize.width-self.widthAndHeight || currentPoint.x < 0 {
@@ -67,6 +69,10 @@ class PointView: UIView {
             }
             self.changePoint()
         })
+    }
+    
+    func randomDuraion() -> Double {
+        return Double((arc4random_uniform(50)+1))/2000
     }
     
     required init?(coder aDecoder: NSCoder) {
