@@ -9,7 +9,7 @@
 import UIKit
 
 class BackView: UIView {
-    let codeCount = 100
+    let codeCount = 150
     var codeViews: Array<PointView> = []
     var beziers: Array<UIBezierPath> = []
     override init(frame: CGRect) {
@@ -36,7 +36,7 @@ class BackView: UIView {
             let distance = self.countDistance(point1: self.codeViews[index].center,
                                               point2: item.center)
             
-            if distance < 80 {
+            if distance < 50 {
                 points.append(item.center)
             }
         }
