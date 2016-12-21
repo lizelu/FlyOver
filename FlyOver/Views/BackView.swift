@@ -11,8 +11,9 @@ import UIKit
 class BackView: UIView {
     let codeCount = 10
     var codeViews: Array<PointView> = []
+    var graph: Array<Array<Bool>>!
     var beziers: Array<UIBezierPath> = []
-    var graph: Array<Array<Bool>> = []
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
@@ -20,13 +21,16 @@ class BackView: UIView {
             let codeView = PointView(frame: CGRect.zero)
             codeView.tag = i
             weak var weak_self = self
-            codeView.setUpdateClosure(closure: { (index) in
-                weak_self?.drawLine(index: index)
-            })
+            if i == 0 {
+                codeView.setUpdateClosure(closure: { (index) in
+                   weak_self?.drawLine()
+                })
+            }
+            
             self.addSubview(codeView)
             self.codeViews.append(codeView)
+            self.beziers.append(UIBezierPath())
         }
-        self.graph = Array<Array<Bool>>(repeating: Array<Bool>(repeating: false, count: self.codeCount), count: self.codeCount)
     }
     
     override func layoutSubviews() {
@@ -35,40 +39,35 @@ class BackView: UIView {
         
     }
     
-    func drawLine(index: Int) {
-        DispatchQueue.global().sync {
-            let bezier: UIBezierPath = self.beziers[index]
-            bezier.removeAllPoints()
-            self.graph[index] = Array<Bool>(repeating: false, count: self.codeCount)
-            for i in 0..<self.graph.count {
-                self.graph[i][index] = false
-            }
-            self.addPoint(bezier: bezier, index: index)
-            DispatchQueue.main.async {
-                self.setNeedsDisplay()
-            }
-        }
-    }
-    
     func drawLine() {
+        self.initGraph()
         for i in 0..<self.codeViews.count {
-            let bezier: UIBezierPath = UIBezierPath()
-            bezier.move(to: self.codeViews[i].center)
-            self.addPoint(bezier: bezier, index: i)
-            self.beziers.append(bezier)
+            self.beziers[i].removeAllPoints()
+            self.addPoint(index: i)
         }
         self.setNeedsDisplay()
     }
     
-    func addPoint(bezier: UIBezierPath, index: Int) {
-        bezier.move(to: self.codeViews[index].center)
-        var preIndex = 0
+    func initGraph() {
+        if self.graph == nil {
+            self.graph = Array<Array<Bool>>(repeating: Array<Bool>(repeating: false, count: self.codeCount), count: self.codeCount)
+        } else {
+            for i in 0..<self.graph.count {
+                for j in 0..<self.graph.count {
+                    self.graph[i][j] = false
+                    self.graph[j][i] = false
+                }
+            }
+        }
+    }
+    
+    func addPoint(index: Int) {
         for j in 0..<self.codeViews.count {
             if index != j && !self.graph[index][j] {
-                bezier.addLine(to: self.codeViews[j].center)
-                self.graph[preIndex][j] = true
-                self.graph[j][preIndex] = true
-                preIndex = j
+                self.beziers[index].move(to: self.codeViews[index].center)
+                self.beziers[index].addLine(to: self.codeViews[j].center)
+                self.graph[index][j] = true
+                self.graph[j][index] = true
             }
         }
     }
@@ -78,14 +77,13 @@ class BackView: UIView {
     }
     
 
-
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        for bezier in self.beziers {
+        for j in 0..<self.beziers.count {
             UIColor.black.setStroke()
-            bezier.lineWidth = 1
-            bezier.stroke()
+            self.beziers[j].lineWidth = 1
+            self.beziers[j].stroke()
         }
     }
 
