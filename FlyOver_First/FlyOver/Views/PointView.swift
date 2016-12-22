@@ -9,6 +9,7 @@
 import UIKit
 let ScreenSize = UIScreen.main.bounds.size
 let ScreenBounds = UIScreen.main.bounds
+
 typealias UpdateViewsClosure = (Int) -> Void
 
 func randomColor() -> UIColor {
@@ -34,7 +35,8 @@ class PointView: UIView {
         self.layer.borderWidth = 0.1
         self.layer.borderColor = UIColor.black.cgColor
         self.backgroundColor = randomColor()
-        self.frame = CGRect(origin: randomPoint(), size: CGSize(width: widthAndHeight, height: widthAndHeight))
+        self.frame = CGRect(origin: randomPoint(),
+                            size: CGSize(width: widthAndHeight, height: widthAndHeight))
     }
 
     /// 设置更新UI回调
@@ -60,6 +62,7 @@ class PointView: UIView {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touche: UITouch in touches {
             self.center = touche.location(in: superview)
+            
             if (self.updateViewClosure != nil) {
                 self.backgroundColor = randomColor()
                 self.updateViewClosure(self.tag)

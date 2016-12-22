@@ -34,6 +34,7 @@ class BackView: UIView {
     func addSubViews() {
         for i in 0..<codeCount {
             let codeView = PointView(frame: CGRect.zero)
+            
             codeView.tag = i
             weak var weak_self = self
             codeView.setUpdateClosure(closure: { (index) in
@@ -42,9 +43,9 @@ class BackView: UIView {
             
             self.addSubview(codeView)
             self.codeViews.append(codeView)
+            
             self.beziers.append(UIBezierPath())
         }
-
     }
     
     /// 划线
