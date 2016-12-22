@@ -59,7 +59,7 @@ class PointView: UIView {
     ///   - event: 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touche: UITouch in touches {
-            self.frame.origin = touche.location(in: superview)
+            self.center = touche.location(in: superview)
             if (self.updateViewClosure != nil) {
                 self.backgroundColor = randomColor()
                 self.updateViewClosure(self.tag)

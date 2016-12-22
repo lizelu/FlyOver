@@ -9,7 +9,7 @@
 import UIKit
 
 class BackView: UIView {
-    let codeCount = 6
+    let codeCount = 10
     var codeViews: Array<PointView> = []
     var graph: Array<Array<Bool>>!
     var beziers: Array<UIBezierPath> = []
