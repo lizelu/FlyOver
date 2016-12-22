@@ -17,6 +17,7 @@ func randomColor() -> UIColor {
 class PointView: UIView {
     var x: CGFloat = 1
     var y: CGFloat = 1
+    var widthChange: CGFloat = 1
     let widthAndHeight: CGFloat = 10
     var updateViewClosure: UpdateViewsClosure! = nil
     override init(frame: CGRect) {
@@ -86,6 +87,7 @@ class PointView: UIView {
             currentPoint.x += self.x
             currentPoint.y += self.y
             self.frame.origin = currentPoint
+           
         }, completion: { (bool) in
             self.backgroundColor = randomColor()
             if self.updateViewClosure != nil {
