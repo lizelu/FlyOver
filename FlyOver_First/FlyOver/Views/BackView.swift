@@ -9,7 +9,7 @@
 import UIKit
 
 class BackView: UIView {
-    let codeCount = 10
+    let codeCount = 6
     var codeViews: Array<PointView> = []
     var graph: Array<Array<Bool>>!
     var beziers: Array<UIBezierPath> = []
@@ -17,18 +17,11 @@ class BackView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.black
-        for i in 0..<codeCount {
-            let codeView = PointView(frame: CGRect.zero)
-            codeView.tag = i
-            weak var weak_self = self
-            codeView.setUpdateClosure(closure: { (index) in
-               weak_self?.drawLine()
-            })
-            
-            self.addSubview(codeView)
-            self.codeViews.append(codeView)
-            self.beziers.append(UIBezierPath())
-        }
+        self.addSubViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
@@ -37,6 +30,24 @@ class BackView: UIView {
         
     }
     
+    /// 添加子视图
+    func addSubViews() {
+        for i in 0..<codeCount {
+            let codeView = PointView(frame: CGRect.zero)
+            codeView.tag = i
+            weak var weak_self = self
+            codeView.setUpdateClosure(closure: { (index) in
+                weak_self?.drawLine()
+            })
+            
+            self.addSubview(codeView)
+            self.codeViews.append(codeView)
+            self.beziers.append(UIBezierPath())
+        }
+
+    }
+    
+    /// 划线
     func drawLine() {
         self.initGraph()
         for i in 0..<self.codeViews.count {
@@ -46,6 +57,21 @@ class BackView: UIView {
         self.setNeedsDisplay()
     }
     
+    /// 往贝塞尔对象上添加点
+    ///
+    /// - Parameter index: <#index description#>
+    func addPoint(index: Int) {
+        for j in 0..<self.codeViews.count {
+            if index != j && !self.graph[index][j] {
+                self.beziers[index].move(to: self.codeViews[index].center)
+                self.beziers[index].addLine(to: self.codeViews[j].center)
+                self.graph[index][j] = true
+                self.graph[j][index] = true
+            }
+        }
+    }
+
+    /// 初始化邻接矩阵
     func initGraph() {
         if self.graph == nil {
             self.graph = Array<Array<Bool>>(repeating: Array<Bool>(repeating: false, count: self.codeCount), count: self.codeCount)
@@ -59,22 +85,6 @@ class BackView: UIView {
         }
     }
     
-    func addPoint(index: Int) {
-        for j in 0..<self.codeViews.count {
-            if index != j && !self.graph[index][j] {
-                self.beziers[index].move(to: self.codeViews[index].center)
-                self.beziers[index].addLine(to: self.codeViews[j].center)
-                self.graph[index][j] = true
-                self.graph[j][index] = true
-            }
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -84,5 +94,4 @@ class BackView: UIView {
             self.beziers[j].stroke()
         }
     }
-
 }
