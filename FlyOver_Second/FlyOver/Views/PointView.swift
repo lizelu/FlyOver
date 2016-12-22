@@ -21,6 +21,19 @@ class PointView: UIView {
     var updateViewClosure: UpdateViewsClosure! = nil
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.configCurrentView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        self.changePoint()
+    }
+    
+    /// 配置当前View
+    func configCurrentView() {
         self.x = randomIncrement()
         self.y = randomIncrement()
         self.layer.cornerRadius = widthAndHeight/2
@@ -30,20 +43,25 @@ class PointView: UIView {
         self.frame = CGRect(origin: randomPoint(), size: CGSize(width: widthAndHeight, height: widthAndHeight))
     }
     
-    override func layoutSubviews() {
-        self.changePoint()
-    }
-    
+    /// 设置更新回调
+    ///
+    /// - Parameter closure:
     func setUpdateClosure(closure: @escaping UpdateViewsClosure) {
         self.updateViewClosure = closure
     }
     
+    /// 随机生成坐标点
+    ///
+    /// - Returns:
     func randomPoint() -> CGPoint {
         arc4random_uniform(UInt32(ScreenSize.width))
         return CGPoint(x: Int(arc4random_uniform(UInt32(ScreenSize.width-widthAndHeight))),
                        y: Int(arc4random_uniform(UInt32(ScreenSize.height-widthAndHeight))))
     }
     
+    /// 随机生成偏移量
+    ///
+    /// - Returns: <#return value description#>
     func randomIncrement() -> CGFloat {
         if arc4random() % 2 == 0 {
             return 1
@@ -52,6 +70,7 @@ class PointView: UIView {
         }
     }
     
+    /// 更新坐标点
     func changePoint() {
         UIView.animate(withDuration: 0.0001, animations: {
             var currentPoint = self.frame.origin
@@ -74,9 +93,5 @@ class PointView: UIView {
             }
             self.changePoint()
         })
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
