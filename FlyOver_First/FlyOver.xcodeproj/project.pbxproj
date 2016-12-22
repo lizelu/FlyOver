@@ -1,0 +1,334 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F44205F91E03ED22003D7062 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44205F81E03ED22003D7062 /* AppDelegate.swift */; };
+		F44205FE1E03ED22003D7062 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44205FC1E03ED22003D7062 /* Main.storyboard */; };
+		F44206001E03ED22003D7062 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44205FF1E03ED22003D7062 /* Assets.xcassets */; };
+		F44206031E03ED22003D7062 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44206011E03ED22003D7062 /* LaunchScreen.storyboard */; };
+		F4D99CE51E092F7700864DEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D99CE21E092F7700864DEE /* ViewController.swift */; };
+		F4D99CE61E092F7700864DEE /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D99CE41E092F7700864DEE /* PointView.swift */; };
+		F4D99CE81E092FC000864DEE /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D99CE71E092FC000864DEE /* BackView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F44205F51E03ED22003D7062 /* FlyOver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlyOver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F44205F81E03ED22003D7062 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F44205FD1E03ED22003D7062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F44205FF1E03ED22003D7062 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F44206021E03ED22003D7062 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F44206041E03ED22003D7062 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4D99CE21E092F7700864DEE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4D99CE41E092F7700864DEE /* PointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
+		F4D99CE71E092FC000864DEE /* BackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F44205F21E03ED22003D7062 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F44205EC1E03ED22003D7062 = {
+			isa = PBXGroup;
+			children = (
+				F44205F71E03ED22003D7062 /* FlyOver */,
+				F44205F61E03ED22003D7062 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F44205F61E03ED22003D7062 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F44205F51E03ED22003D7062 /* FlyOver.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F44205F71E03ED22003D7062 /* FlyOver */ = {
+			isa = PBXGroup;
+			children = (
+				F4D99CE11E092F7700864DEE /* Controllers */,
+				F4D99CE31E092F7700864DEE /* Views */,
+				F44205F81E03ED22003D7062 /* AppDelegate.swift */,
+				F44205FC1E03ED22003D7062 /* Main.storyboard */,
+				F44205FF1E03ED22003D7062 /* Assets.xcassets */,
+				F44206011E03ED22003D7062 /* LaunchScreen.storyboard */,
+				F44206041E03ED22003D7062 /* Info.plist */,
+			);
+			path = FlyOver;
+			sourceTree = "<group>";
+		};
+		F4D99CE11E092F7700864DEE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F4D99CE21E092F7700864DEE /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F4D99CE31E092F7700864DEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4D99CE41E092F7700864DEE /* PointView.swift */,
+				F4D99CE71E092FC000864DEE /* BackView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F44205F41E03ED22003D7062 /* FlyOver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F44206071E03ED22003D7062 /* Build configuration list for PBXNativeTarget "FlyOver" */;
+			buildPhases = (
+				F44205F11E03ED22003D7062 /* Sources */,
+				F44205F21E03ED22003D7062 /* Frameworks */,
+				F44205F31E03ED22003D7062 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlyOver;
+			productName = FlyOver;
+			productReference = F44205F51E03ED22003D7062 /* FlyOver.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F44205ED1E03ED22003D7062 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = ZeluLi;
+				TargetAttributes = {
+					F44205F41E03ED22003D7062 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = AWN3A347S4;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F44205F01E03ED22003D7062 /* Build configuration list for PBXProject "FlyOver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F44205EC1E03ED22003D7062;
+			productRefGroup = F44205F61E03ED22003D7062 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F44205F41E03ED22003D7062 /* FlyOver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F44205F31E03ED22003D7062 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44206031E03ED22003D7062 /* LaunchScreen.storyboard in Resources */,
+				F44206001E03ED22003D7062 /* Assets.xcassets in Resources */,
+				F44205FE1E03ED22003D7062 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F44205F11E03ED22003D7062 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4D99CE61E092F7700864DEE /* PointView.swift in Sources */,
+				F4D99CE81E092FC000864DEE /* BackView.swift in Sources */,
+				F4D99CE51E092F7700864DEE /* ViewController.swift in Sources */,
+				F44205F91E03ED22003D7062 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F44205FC1E03ED22003D7062 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F44205FD1E03ED22003D7062 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F44206011E03ED22003D7062 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F44206021E03ED22003D7062 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F44206051E03ED22003D7062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F44206061E03ED22003D7062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F44206081E03ED22003D7062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AWN3A347S4;
+				INFOPLIST_FILE = FlyOver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ZeluLi.FlyOverFirst;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F44206091E03ED22003D7062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AWN3A347S4;
+				INFOPLIST_FILE = FlyOver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ZeluLi.FlyOverFirst;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F44205F01E03ED22003D7062 /* Build configuration list for PBXProject "FlyOver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44206051E03ED22003D7062 /* Debug */,
+				F44206061E03ED22003D7062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F44206071E03ED22003D7062 /* Build configuration list for PBXNativeTarget "FlyOver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44206081E03ED22003D7062 /* Debug */,
+				F44206091E03ED22003D7062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F44205ED1E03ED22003D7062 /* Project object */;
+}
