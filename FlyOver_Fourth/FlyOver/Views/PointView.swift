@@ -12,7 +12,7 @@ let ScreenBounds = UIScreen.main.bounds
 typealias UpdateViewsClosure = (Int) -> Void
 class PointView: UIView {
     
-    let widthAndHeight: CGFloat = 20
+    let widthAndHeight: CGFloat = 10
     
     var x: CGFloat = 1
     var y: CGFloat = 1

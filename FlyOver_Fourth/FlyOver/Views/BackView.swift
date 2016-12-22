@@ -10,7 +10,7 @@ import UIKit
 
 class BackView: UIView {
     let codeCount = 1
-    let range: CGFloat = 100
+    let range: CGFloat = 80
     var codeViews: Array<PointView> = []
     var beziers: Array<UIBezierPath> = []
     override init(frame: CGRect) {
@@ -31,13 +31,19 @@ class BackView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touche: UITouch in touches {
-            let center = touche.location(in: superview)
-            self.addCodeView(tag: self.codeViews.count, center: center)
+        if self.codeViews.count < 80 {
+            for touche: UITouch in touches {
+                let center = touche.location(in: superview)
+                self.addCodeView(tag: self.codeViews.count, center: center)
+            }
         }
-        
     }
-    
+
+    /// 添加节点
+    ///
+    /// - Parameters:
+    ///   - tag: 添加节点的Tag
+    ///   - center: 添加节点的center，如果为nil的话，则随机生成
     func addCodeView(tag: Int, center: CGPoint?) {
         self.beziers.append(UIBezierPath())
         let codeView = PointView(frame: CGRect.zero)
