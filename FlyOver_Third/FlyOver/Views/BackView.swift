@@ -94,9 +94,7 @@ class BackView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         for j in 0..<self.beziers.count {
-            let weight = CGFloat(arc4random_uniform(1000))/1000
-            let color = UIColor(hue: weight, saturation: 1, brightness: 1, alpha: 1)
-            color.setStroke()
+            RandomColor.shareInstance().setStroke()
             self.beziers[j].lineWidth = 0.3
             self.beziers[j].stroke()
         }
