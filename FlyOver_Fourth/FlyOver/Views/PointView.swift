@@ -87,7 +87,7 @@ class PointView: UIView {
     /// 改变当前View的坐标
     func changePoint() {
         let weight = CGFloat(arc4random_uniform(1000))/1000
-        self.backgroundColor = UIColor(hue: weight, saturation: 1, brightness: 1, alpha: 1)
+        self.backgroundColor = RandomColor.shareInstance()
         var currentPoint = self.frame.origin
         
         if currentPoint.x > ScreenSize.width-self.widthAndHeight || currentPoint.x < 0 {
@@ -118,3 +118,36 @@ class PointView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class RandomColor {
+    var randomColors = Array<UIColor>()
+    var colorCount = 20
+    var randomColor: UIColor {
+        get {
+            let index = Int(arc4random_uniform(1000)) % colorCount
+            return randomColors[index]
+        }
+    }
+    private static var color: RandomColor!
+    static func shareInstance() -> UIColor {
+        if color == nil {
+            color = RandomColor()
+        }
+        return color.randomColor
+    }
+    
+    private init() {
+        if randomColors.isEmpty {
+            self.addColors()
+        }
+    }
+    
+    func addColors() {
+        for _ in 0..<colorCount {
+            let weight = CGFloat(arc4random_uniform(1000))/1000
+            let color = UIColor(hue: weight, saturation: 1, brightness: 1, alpha: 1)
+            self.randomColors.append(color)
+        }
+    }
+}
+
